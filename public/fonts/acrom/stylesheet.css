@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Acrom';
+    font-display: swap;
+    src: url('Acrom-Light.eot');
+    src: local('Acrom Light'), local('Acrom-Light'),
+        url('Acrom-Light.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-Light.woff2') format('woff2'),
+        url('Acrom-Light.woff') format('woff'),
+        url('Acrom-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+/*@font-face {
+    font-family: 'Acrom';
+    src: url('Acrom-Thin.eot');
+    src: local('Acrom Thin'), local('Acrom-Thin'),
+        url('Acrom-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-Thin.woff2') format('woff2'),
+        url('Acrom-Thin.woff') format('woff'),
+        url('Acrom-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Acrom';
+    font-display: swap;
+    src: url('Acrom-Bold.eot');
+    src: local('Acrom Bold'), local('Acrom-Bold'),
+        url('Acrom-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-Bold.woff2') format('woff2'),
+        url('Acrom-Bold.woff') format('woff'),
+        url('Acrom-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Acrom';
+    font-display: swap;
+    src: url('Acrom-Regular.eot');
+    src: local('Acrom'), local('Acrom-Regular'),
+        url('Acrom-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-Regular.woff2') format('woff2'),
+        url('Acrom-Regular.woff') format('woff'),
+        url('Acrom-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*@font-face {
+    font-family: 'Acrom';
+    src: url('Acrom-ExtraBold.eot');
+    src: local('Acrom ExtraBold'), local('Acrom-ExtraBold'),
+        url('Acrom-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-ExtraBold.woff2') format('woff2'),
+        url('Acrom-ExtraBold.woff') format('woff'),
+        url('Acrom-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Acrom';
+    font-display: swap;
+    src: url('Acrom-Medium.eot');
+    src: local('Acrom Medium'), local('Acrom-Medium'),
+        url('Acrom-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Acrom-Medium.woff2') format('woff2'),
+        url('Acrom-Medium.woff') format('woff'),
+        url('Acrom-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+

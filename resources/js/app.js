@@ -1,5 +1,4 @@
 import './bootstrap';
+import './editor/editorjs'
 
-import EditorJS from '@editorjs/editorjs'
-window.EditorJS = EditorJS
 

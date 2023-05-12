@@ -1,0 +1,26 @@
+html, body, h1, h2, h3, h4, h5, h6, .uk-navbar-nav > li > a {
+    font-family: Acrom, serif;
+    color: #636D79;
+}
+
+h1 {
+    font-family: 'Acrom', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #39464E;
+    margin-top: 0px;
+}
+.ce-paragraph {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 22px!important;
+    color: #636D79;
+}
+.ce-toolbar__content, .ce-block__content {
+    max-width: 783px;
+}
+
