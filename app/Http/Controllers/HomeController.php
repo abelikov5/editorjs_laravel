@@ -33,7 +33,7 @@ class HomeController extends Controller
             $data = $data->toArray();
             return view('home', ['pageId' => $data['pageId'], 'editorData' => $data['editorData']]);
         }
-        return view('qq', ['pageId' => '', 'editorData' => '']);
+        return view('home', ['pageId' => '', 'editorData' => '']);
 
     }
 }
