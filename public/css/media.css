@@ -1,0 +1,1081 @@
+@media (max-width: 1299px) {
+    header .uk-navbar-nav > li > a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    header .uk-navbar-nav > li > a.uk-button {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .wrap_partners {
+        justify-content: center;
+    }
+    .partners {
+
+    }
+    .children_container {
+        width: 100%;
+    }
+    .wrap_contact_img_main img {
+        width: 50%;
+    }
+
+    .pattern_dark:after, .pattern_white:after {
+        display: none;
+    }
+
+    .pattern_show_mobile:after {
+        display: block;
+        width: 100px;
+        right: 0;
+        margin-right: -50px;
+        background-size: contain;
+        z-index: 5;
+    }
+
+    .pattern_show_mobile > div {
+        position: relative;
+        z-index: 2;
+    }
+
+}
+
+@media (max-width: 959px) {
+    .help_group_img img {
+        height: auto;
+        width: auto;
+    }
+    .news_slide_width {
+        width: 75%;
+    }
+    .help_with_group {
+        padding: 30px 0;
+    }
+    .help_group_text button {
+        margin-top: unset;
+        width: 95%;
+    }
+    .help_group_text h2, .help_group_text {
+        text-align: center;
+    }
+    .help_group_sub {
+        margin-bottom: 20px;
+    }
+    .wrap_help_with_group {
+        width: 90%;
+    }
+    .cheer_get_free {
+        padding-top: 50px;
+    }
+    .cheer_sub {
+        font-size: 17px;
+        text-align: center;
+    }
+    .wrap_order_item {
+        margin: 10px;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+    .sbory_trainer {
+        position: unset;
+    }
+    .trainer_padding {
+        margin-bottom: unset;
+    }
+    .br_dnone {
+        display: none;
+    }
+    .main_head_info, .sub_header {
+        display: none!important;
+    }
+    .head_hamburger {
+        display: block;
+    }
+    .breadcrumb {
+        font-size: 10px;
+    }
+    .sub_head_li .uk-dropdown.uk-open {
+        width: 100%!important;
+        left: 0!important;
+    }
+    .lk_btn_wrapper {
+        margin-right: 10px;
+    }
+    .partners {
+        width: 170px;
+    }
+    .sign_nebo {
+        display: none;
+    }
+    .nebo_svg, .sport_svg {
+        display: none;
+    }
+    .adult_h1 {
+        margin-top: 50px!important;
+    }
+
+    .wrap_swit_column_ {
+        margin: 10px;
+    }
+    .wrap_contact_img, .wrap_cont_main_img {
+        display: none;
+    }
+    .wrap_cont_main {
+        width: 400px;
+    }
+    .wrap_contact {
+        justify-content: center;
+    }
+    .wrap_about {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .swip_show_mob {
+        display: block!important;
+    }
+    .swip_hide_mob {
+        display: none;
+    }
+    .step_mob_main {
+        margin-top: 40px!important;
+    }
+    .wrap_contact_img {
+        display: block;
+    }
+    .wrap_contact_img_main {
+        display: none;
+    }
+    .wrap_map_map {
+        width: 50%;
+    }
+
+    .wrap_map_adress {
+        width: 50%;
+    }
+
+    .wrap_map_height {
+        height: 400px;
+    }
+
+    .wrap_tc_info {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        color: #39464E;
+    }
+
+    .main .subtitle {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .promo h3 {
+        margin-top: 0;
+    }
+
+    .contact_wrapper {
+        max-width: none;
+        padding-right: 0;
+        margin-left: 0;
+        padding-bottom: 30px;
+    }
+
+    .mobile_sticky_menu .uk-grid {
+        margin-left: 0;
+    }
+
+    .mobile_sticky_menu .uk-grid > * {
+        padding-left: 0;
+
+    }
+
+    .mobile_sticky_menu .uk-grid-divider > :not(.uk-first-column)::before {
+        left: 0;
+        border-left-color: #DCE5EA;
+    }
+
+    .mobile_sticky_menu a {
+        display: inline-block;
+        padding-top: 16px;
+        padding-bottom: 10px;
+    }
+
+    .mobile_sticky_menu {
+        box-shadow: 0px 25px 20px -13.9366px rgba(181, 191, 197, 0.5);
+    }
+
+    header .uk-container {
+        padding-right: 0;
+    }
+
+    .middle_max_width_full {
+        max-width: none !important;
+    }
+
+    #map_new {
+        /*height: 400px !important;*/
+    }
+
+    #map_new_toggle {
+        /*height: auto;*/
+    }
+
+    .tax_card {
+        padding: 20px;
+    }
+
+    .tax_card img {
+        margin-bottom: 20px !important;
+    }
+
+    .tax_card .uk-button {
+        margin-top: 20px;
+    }
+
+    .trainer_h2 {
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    .trainer_h3 {
+        margin-top: 50px !important;
+        font-weight: 700;
+        font-size: 20px !important;
+        line-height: 24px !important;
+    }
+
+    .trainer_h3_sub {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .wrap_trainer_img_mob {
+        display: block;
+    }
+
+    .wrap_trainer_img {
+        display: none;
+    }
+
+    .blog_item_description {
+        font-size: 14px;
+    }
+
+    .blog_item h1 {
+        font-size: 20px;
+    }
+
+    .blog_item_section h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .blog_categories .title {
+        font-size: 14px;
+    }
+
+    .blog_stars .common_star {
+        width: 24px;
+    }
+
+    /*.wrap_trainer_img {*/
+    /*    position: relative;*/
+    /*}*/
+    /*.wrap_trainer_img img {*/
+    /*    position: absolute;*/
+    /*}*/
+
+/*  #ya_banner {
+    width: 288px;
+    height: 30px;
+    position: fixed;
+    bottom: auto;
+    top: 41px;
+    left: 50%;
+    margin-left: -144px;
+    z-index: 99999;
+    overflow: hidden;
+  }
+  .ya_hide_banner {
+    width: 24px;
+    height: 24px;
+    top: 3px;
+    right: 40px;
+  }*/
+
+    #ya_banner {
+        bottom: 55px;
+        overflow: hidden;
+    }
+
+}
+
+@media screen and (max-width: 783px) {
+
+    .lk_btn_wrapper {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .uk-navbar-item, .uk-navbar-nav > li > a, .uk-navbar-toggle {
+        min-height: 40px;
+    }
+
+    .live_slide_size .text_wrapper {
+        min-height: 150px;
+    }
+
+    .wrap_swit_column_ {
+        margin: 2px;
+    }
+    .swit_line {
+        border: 1px solid transparent;
+    }
+    .wrap_map {
+        display: block;
+    }
+    .wrap_map_map,  .wrap_map_adress{
+        width: 100%;
+    }
+    .wrap_map_adr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .wrap_adr_toggle {
+        width: 45%;
+        overflow: hidden;
+        font-size: 12px;
+    }
+
+    .news_wrapper {
+        padding: 10px !important;
+    }
+
+    .nebo_life_title {
+        font-size: 16px !important;
+    }
+
+    .nebo_life_text {
+        font-size: 13px !important;
+    }
+
+    .trainer_50pct {
+        width: 50%;
+    }
+
+    .wrap_trainer_info {
+        width: 300px;
+        min-height: 350px;
+        margin-left: 50px;
+    }
+
+    .trainer_btn {
+        display: none;
+    }
+
+    .trainer_btn_mob {
+        display: block;
+    }
+
+    .trainer_img {
+        width: 250px;
+    }
+
+    .trainer_h2 {
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    .wrap_trainer_img_mob {
+        position: absolute;
+        width: 50%;
+        margin-left: -45px;
+    }
+
+    .trainer_h3 {
+        margin-top: 10px !important;
+        font-weight: 700;
+        font-size: 17px !important;
+    }
+
+    .trainer_h3_sub {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .seo_container {
+        width: 90%;
+    }
+
+    .wrap_tc {
+        flex-wrap: wrap;
+    }
+
+    .tax_card_wrap_info {
+        padding: 0;
+    }
+
+    .tax_card_50_pct {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+@media (max-width: 639px) {
+    .why_high {
+        margin-top: 20px;
+    }
+    .wrap_order_item {
+        display: flex;
+        justify-content: center;
+    }
+    .sbory_h1 {
+        font-size: 22px;
+    }
+    .wrap_order_item {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .uk-grid.blog_card {
+        margin-left: 0;
+    }
+
+    .blog_card .uk-card-body {
+        padding: 20px;
+    }
+
+    .blog_card.uk-grid > * {
+        padding-left: 0;
+    }
+
+    .wrap_safety {
+        margin-top: unset;
+        flex-wrap: wrap;
+    }
+    .blog_anchors .title {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .safety_item {
+        width: 50%;
+        margin-top: 20px;
+    }
+    .wrap_meal_item {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    .meal_item {
+        width: 100%;
+        padding: unset;
+    }
+    .wrap_meal {
+        padding: 10px;
+    }
+    .wrap_meal_text h2 {
+        margin: 20px 0;
+    }
+    .wrap_meal_list_ol li {
+        margin-top: 5px;
+    }
+    .meal_btn {
+        margin-top: 15px;
+    }
+
+    .why_container {
+        width: 95%;
+    }
+    .my_slider li {
+        width: 70%!important;
+    }
+    .ml-1_rub svg {
+        width: 15px;
+        height: 15px;
+    }
+    .ml-7_rub svg{
+        width: 10px;
+        height: 10px;
+    }
+    .second_head {
+        font-size: 20px!important;
+    }
+    .first_head {
+        font-size: 22px;
+        margin: 30px 0;
+    }
+    .show_mob {
+        display: block;
+    }
+    .show_desk {
+        display: none;
+    }
+
+    .benefit_show_mob {
+        display: unset;
+    }
+    .benefit_hide_mob {
+        display: none;
+    }
+    .partn_show_mob {
+        display: block!important;
+    }
+    .wrap_today_cards {
+        margin: 10px;
+    }
+    .wrap_today_eggs {
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .wrap_swit_comp {
+        font-size: 14px!important;
+    }
+    .wrap_swit_num {
+        font-size: 12px;
+    }
+    .partn_hide_mob {
+        display: none;
+    }
+    .today_card {
+        display: block;
+        padding: 20px 10px;
+        width: 118px;
+        height: 135px;
+        margin-bottom: 10px;
+    }
+    .wrap_today_head {
+        margin-bottom: 20px;
+    }
+    .today_card_info {
+        text-align: center;
+        margin-left: 0;
+    }
+    .card_info_text {
+        font-size: 12px;
+        line-height: 130%;
+    }
+    .about_head, .wrap_about_head, .wrap_today_head {
+        font-size: 20px;
+    }
+    .about_text {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+   .wrap_about_text {
+       font-size: 14px;
+   }
+    .seo_get_trainer {
+        flex-wrap: wrap;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+        width: 100% !important;
+    }
+
+    .wrap_trainer_info {
+        margin-left: 10px;
+    }
+
+    .seo_img img, .seo_img div {
+        height: auto;
+    }
+
+    .seo_h1 {
+        font-size: 25px;
+    }
+
+    .seo_h2 h2 {
+        font-size: 20px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    .main .subtitle {
+        font-size: 14px;
+    }
+
+    .mobile_max_width_full {
+        max-width: none !important;
+    }
+
+    h2, .section_h {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .uk-grid > * {
+        padding-left: 15px;
+    }
+
+    * + .uk-grid-margin, .uk-grid + .uk-grid, .uk-grid > .uk-grid-margin {
+        margin-top: 15px;
+    }
+
+    .uk-grid {
+        margin-left: -15px;
+    }
+
+    .mobile_slider {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+
+    .mobile_slider > .uk-grid > div {
+        width: 62%!important;
+    }
+
+    .uk-card-default {
+        font-size: 12px;
+    }
+
+    .uk-card-default .title {
+        font-size: 13px;
+    }
+
+    .uk-card-default .text_wrapper {
+        padding-bottom: 15px;
+    }
+
+    .uk-button-primary {
+        font-size: 16px;
+        padding-left: 5px;
+        padding-right: 5px;
+        width: 380px;
+    }
+
+    .promo {
+        font-size: 14px;
+    }
+
+    .promo h3 {
+        font-size: 18px;
+    }
+
+    .promo .h3_subtitle {
+        font-size: 17px;
+    }
+
+    .mobile_bottom {
+        position: absolute;
+        bottom: 30px;
+        width: calc(100% - 30px);
+    }
+
+    .price_item .title {
+        font-size: 18px;
+    }
+
+    .price_item {
+        padding: 25px 10px 25px;
+    }
+
+    .price_item .value {
+        font-size: 20px;
+    }
+
+    .tab_nav li a {
+        font-size: 10px !important;
+        min-width: 120px;
+        width: 130px;
+    }
+
+    .uk-margin-medium-bottom {
+        margin-bottom: 30px !important;
+    }
+
+    .h2_subtitle {
+        font-size: 14px;
+    }
+
+    .contact_section h2 {
+        font-size: 20px;
+    }
+
+    .contact_section .h2_subtitle {
+        font-size: 17px;
+    }
+
+    .footer_link {
+        font-size: 15px;
+    }
+
+    footer .info {
+        margin-top: 20px;
+        padding: 20px 0;
+        font-size: 12px;
+    }
+
+    footer .uk-nav li > a {
+        display: inline-block;
+    }
+
+    .main {
+        font-size: 16px;
+        padding-bottom: 30px !important;
+    }
+
+    .footer_social_wrapper {
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+
+    footer hr {
+        border-top-color: #C5C5C5;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .uk-grid-divider > :not(.uk-first-column)::before {
+        left: 15px;
+    }
+
+    .pay_section .card {
+        padding: 20px 30px;
+    }
+
+    .pay_section h2 {
+        font-size: 18px;
+        margin-bottom: 10px !important;
+    }
+
+    .pay_section .address_title {
+        font-size: 16px;
+    }
+
+    .pay_section .address_text {
+        font-size: 16px;
+    }
+
+    .pay_section .add_btn {
+        font-size: 16px;
+        padding-right: 50px;
+    }
+
+    .pay_section .add_btn span {
+        width: 34px;
+        height: 34px;
+        padding-top: 5px;
+        top: 2px;
+    }
+
+    .doc_item {
+        font-size: 17px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .file_btn {
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .doc_item > div {
+        width: auto;
+    }
+
+    .text-medium {
+        font-size: 17px;
+    }
+
+    .map_tab_switcher .uk-tab {
+        display: block;
+    }
+
+    .uk-active > a.map_tab_item {
+        margin-right: 0;
+    }
+
+    .promo h2 {
+        margin-bottom: 30px;
+    }
+
+    .icon_wrapper img {
+        width: 120px;
+    }
+
+    .icon_wrapper {
+        padding-top: 15px;
+        padding-bottom: 0;
+    }
+
+    .uk-card-default.card_big .title {
+        font-size: 14px;
+    }
+
+    .font_large {
+        font-size: 15px;
+    }
+
+    .uk-modal-title {
+        font-size: 1.2rem;
+    }
+
+    .sbory_gallery_slider .uk-grid .uk-margin-medium-bottom {
+        margin-bottom: 15px !important;
+    }
+
+    .info_page {
+        font-size: 14px;
+    }
+
+    .info_page .subtitle {
+        font-size: 16px;
+    }
+
+    .info_page h3 {
+        font-size: 20px;
+    }
+
+    .tax_card {
+        font-size: 18px;
+    }
+
+    h2 + .price_section_subtitle {
+        font-size: 14px;
+    }
+
+    .price_section_subtitle a {
+        margin-left: 0;
+    }
+
+    .review_scroll_btn {
+        max-width: none;
+        width: 100%;
+        margin-bottom: 20px !important;
+    }
+
+    .review_form h3 {
+        font-size: 17px;
+    }
+
+    .review_form .title {
+        font-size: 17px;
+    }
+
+    .uk-slider-items.review_items > div {
+        max-width: 350px;
+    }
+
+    .coach_detail_item {
+        font-size: 17px;
+    }
+
+    .trainer_btn_mob {
+        width: 90% !important;
+    }
+
+    .wrap_trainer {
+        min-height: 380px;
+    }
+
+    #ya_banner {
+        bottom: 55px;
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin-left: 0;
+
+        text-align: center;
+        max-height: 70px;
+    }
+    .ya_hide_banner {
+        width: 35px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .show_min_650 {
+        display: block;
+    }
+
+    .show_max_650 {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .ya_hide_banner {
+        right: 10px;
+    }
+}
+
+@media (max-width: 567px) {
+
+    .uk-pagination > * > * {
+        font-size: 12px;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+    .elipsis {
+        margin: 0 10px 0 0;
+    }
+    .paginate_arrow {
+        position: absolute;
+        width: 10px;
+        height: 16px;
+    }
+    .wrap_partners {
+        margin-top: 31px;
+    }
+    .partners {
+        width: 108px;
+        height: 50px;
+        margin: 8px;
+    }
+    .live_slide_size .text_wrapper {
+        min-height: 220px;
+    }
+    .uk-open > .uk-accordion-title::before {
+        right: 15px;
+    }
+    .uk-accordion-title::before {
+        right: 15px;
+    }
+    .wrap_accord_qst {
+        font-size: 18px;
+        line-height: 110%;
+    }
+
+    .accord_qst {
+        padding: 0 60px 0 15px;
+    }
+    .accord_ans {
+        padding: 15px 0;
+        font-size: 16px;
+    }
+    .seo_text {
+        font-size: 14px;
+        line-height: 17px!important;
+    }
+    .wrap_seo_img {
+        height: 190px;
+    }
+    .seo_content {
+        margin-top: 40px;
+        font-size: 20px;
+        text-align: center;
+    }
+    .wrap_seo_btn {
+        width: 100%;
+    }
+    .seo_img_btn {
+        width: 90%;
+        margin: 30px auto 0;
+        min-height: 45px;
+        line-height: 44px;
+    }
+
+
+    .live_slide_size .text_wrapper {
+        margin-bottom: unset;
+    }
+    .news_unset_padding {
+        padding: 15px 15px 25px 15px!important;
+    }
+    .card_info_num {
+        font-size: 24px;
+    }
+    .wrap_adr_toggle {
+        width: 100%;
+    }
+    .wrap_contact_img, .wrap_cont_main_img {
+        display: none;
+    }
+    .wrap_cont_main {
+        width: 100%;
+    }
+    .wrap_contact {
+        z-index: 10!important;
+    }
+
+    .ya_hide_banner {
+        right: 10px;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .about_width {
+        width: 85%;
+    }
+    .wrap_children {
+        margin: 5px;
+    }
+    .wrap_today_head {
+        margin: 0 20px 20px;
+    }
+    .trainer_h2 {
+        font-size: 20px;
+    }
+
+    .wrap_trainer_img_mob {
+        width: 100%;
+        bottom: 0;
+    }
+
+    .trainer_img {
+        width: 0;
+    }
+
+    .wrap_trainer_info {
+        margin-left: 0px;
+        min-height: 200px;
+    }
+
+    .wrap_trainer_img_mob {
+        display: none;
+    }
+
+    .wrap_trainer_img_mob_568 {
+        display: block;
+    }
+
+    .wrap_trainer {
+        min-height: 150px;
+    }
+
+    .wrap_trainer_info {
+        width: 100%;
+    }
+
+    /*.live_slide_size .text_wrapper {*/
+    /*    min-height: 250px;*/
+    /*}*/
+
+    .nebo_life_text {
+        font-size: 12px !important;
+    }
+}
+
+
+

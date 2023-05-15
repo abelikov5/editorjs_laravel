@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 
 class EditorController extends Controller
 {
-    public function preview()
+    public function preview(Request $r)
     {
-        $data = Editor::latest('created_at')->first();
+        $page_id = $r->input('page_id');
 
-        return response()->json($data);
+        $data = Editor::where('pageId', $page_id)->get();
+//        echo $data[0]->editorData;
+//        return false; \response()->json($data[0]->editorData);
+
+        $data = $data->toArray();
+        if(isset($data[0])) {
+            return view('prev', ['editorData' => $data[0]['editorData']]);
+        }
+        return view('404');
     }
 
     public function upload(Request $r)

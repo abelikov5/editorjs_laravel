@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/fonts/acrom/stylesheet.css">
     <link rel="stylesheet" href="/css/style_editor.css">
 
+
     <!-- Scripts -->
 {{--    @vite('resources/js/helpers/functions.js')--}}
     @vite(['resources/sass/app.scss', 'resources/js/app.js' ])
@@ -31,7 +32,7 @@
                 </button>
                 @auth()
                     <button id="saveButton">SafeButton</button>
-                    <button>Preview</button>
+                    <button id="previewBtn">Preview</button>
                 @endauth
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
