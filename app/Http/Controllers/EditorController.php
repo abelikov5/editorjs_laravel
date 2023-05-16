@@ -64,7 +64,7 @@ class EditorController extends Controller
             $resp = new \stdClass();
             $resp->success = 1;
             $resp->file = new \stdClass();
-            $resp->file->url = env('APP_URL'). 'storage/img/' . $name;
+            $resp->file->url = env('APP_URL'). '/storage/img/' . $name;
 
             return response()->json($resp);
         }

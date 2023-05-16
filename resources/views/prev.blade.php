@@ -6,7 +6,6 @@
             @switch($el)
                 @case($el["type"] === 'image')
                 <div>
-
                     <img src="{{$el['data']['file']['url']}}" alt="">
                 </div>
                 @break
