@@ -3074,3 +3074,78 @@ h2 + .price_section_subtitle {
 .blog_categories .uk-label {
     margin-bottom: 5px;
 }
+.d_flex {
+    display: flex;
+}
+.d_center {
+    justify-content: center;
+    align-items: center;
+}
+.btn-primary {
+    background-color: #4099de;
+    color: white;
+    height: 2.25rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    line-height: 2.25rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    border: unset;
+}
+.btn-primary:hover {
+    background-color: #297ec0;
+}
+
+/*
+Dashboard
+*/
+
+.dash_head, .dash_body, .dash_item {
+    justify-content: space-between;
+}
+.dash_edit div {
+    margin-left: 10px;
+    fill: currentColor;
+    color: whitesmoke;
+}
+.dash_edit svg {
+    fill: #b3b9bf;
+}
+.dash_container {
+    width: 1200px;
+    background-color: white;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+.dash_head {
+    background-color: #f4f7fa;
+    font-weight: 800;
+    font-size: .75rem;
+    color: #7c858e;
+    text-transform: uppercase;
+    padding: 0.75rem;
+    letter-spacing: .05em;
+    border: solid 1px #e3e7eb;
+}
+.dash_body {
+    padding: 10px;
+}
+.dash_item {
+    margin: 5px 0;
+}
+.dash_id {
+    width: 10%;
+}
+.dash_created {
+    width: 20%;
+}
+.dash_slug {
+    width: 50%;
+}
+.dash_status {
+    width: 15%;
+}
+.dash_edit {
+    width: 15%;
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Editor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -22,10 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
+
     public function home()
     {
         $data = Editor::latest('created_at')->first();
@@ -34,6 +32,23 @@ class HomeController extends Controller
             return view('home', ['pageId' => $data['pageId'], 'editorData' => $data['editorData']]);
         }
         return view('home', ['pageId' => '', 'editorData' => '']);
+
+    }
+
+    public function dashboard()
+    {
+        $res = DB::table('editors')
+            ->select('id','pageId', 'created_at', 'active', 'slack', 'header', 'folderId')
+            ->orderBy('id', 'DESC')
+            ->simplePaginate(25);
+
+//        return response()->json($res);
+
+        return view('dashboard', [
+            'data' => $res,
+        ]);
+
+//        return view('home', ['pageId' => '', 'editorData' => '']);
 
     }
 }

@@ -25,6 +25,7 @@ Auth::routes();
 
 //Route::get('/home',     [HomeController::class, 'index'])->name('home');
 Route::get('/home',     [HomeController::class, 'home'])->name('home');
+Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/preview',  [EditorController::class, 'preview'])->name('preview');
 Route::post('/preview', [EditorController::class, 'upload']);
 Route::post('/api/uploadFile', [EditorController::class, 'uploadFile']);
