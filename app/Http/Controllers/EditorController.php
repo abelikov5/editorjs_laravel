@@ -70,4 +70,18 @@ class EditorController extends Controller
         }
 
     }
+
+    public function delete(Request $r) {
+        $token  = $r->session()->token();
+        $csrf   = $r->input('csrf');
+        $pageId = $r->input('pageId');
+        if($token === $csrf && isset($pageId)) {
+            $res = Editor::where('pageId', $pageId)
+                ->delete();
+            if($res === 1) {
+                return response()->json(true);
+            }
+        }
+        return \response()->json(false);
+    }
 }

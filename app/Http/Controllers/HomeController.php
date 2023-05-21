@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Editor;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,18 +25,16 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function home()
+    public function home(Request $r): Renderable
     {
-        $data = Editor::latest('created_at')->first();
-        if(isset($data)) {
-            $data = $data->toArray();
+        if($r->input('pageId')) {
+            $data = Editor::where('pageId', $r->input('pageId'))->first()->toArray();
             return view('home', ['pageId' => $data['pageId'], 'editorData' => $data['editorData']]);
         }
         return view('home', ['pageId' => '', 'editorData' => '']);
-
     }
 
-    public function dashboard()
+    public function dashboard(): Renderable
     {
         $res = DB::table('editors')
             ->select('id','pageId', 'created_at', 'active', 'slack', 'header', 'folderId')

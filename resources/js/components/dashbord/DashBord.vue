@@ -9,7 +9,7 @@
         </div>
 
         <div class="dash_body" >
-            <dash-element v-for="item in pages" :data="item" />
+            <DashElement v-for="item in pages" :data="item" @del-elem="delElem(item.id)" />
         </div>
     </div>
 </template>
@@ -22,15 +22,20 @@
     export default {
         components: { DashElement },
         props: ['data'],
+        emits: ['del-elem'],
+
         data() {
             return {
                 pages: '',
             }
         },
+        methods: {
+            delElem(id){
+                this.pages = this.pages.filter(item => item.id !== id);
+            },
+        },
         mounted () {
-            // Как-то обрабатываем данные
             this.pages = this.data.data;
-            // console.log(this.data.data);
         }
     }
 </script>

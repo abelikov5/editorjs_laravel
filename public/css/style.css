@@ -2,6 +2,9 @@ html, body, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge,
     font-family: Acrom;
     color: #636D79;
 }
+a, a:hover {
+    text-decoration: none!important;
+}
 
 h2, .section_h {
     color: #39464E;

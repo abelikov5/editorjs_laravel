@@ -38,9 +38,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 @auth()
-                    <button id="newPage" class="btn-primary d_center d_flex">
-                        Создать страницу
-                    </button>
+                    <a href="{{route('editor')}}">
+                        <button id="newPage" class="btn-primary d_center d_flex">
+                            Создать страницу
+                        </button>
+                    </a>
+
                 @endauth
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
