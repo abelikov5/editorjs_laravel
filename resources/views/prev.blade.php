@@ -1,4 +1,4 @@
-@extends('layouts.prev')
+@extends('layouts.base')
 
 @section('content')
     <div class="seo_container">

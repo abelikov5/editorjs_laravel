@@ -1,8 +1,8 @@
-@extends('layouts.dash')
+@extends('layouts.base')
 
 @section('content')
     <div class="dash_container">
-        <dash-board :data='@json($data)'/>
+        <dash-board :data='@json($data)' :base='@json($url)'/>
     </div>
 
     <div>

@@ -247,8 +247,8 @@ pre code {
 }
 
 :focus:not([tabindex^='-']) {
-    outline: 2px dotted #333;
-    outline-offset: 1px
+    /*outline: 2px dotted #333;*/
+    /*outline-offset: 1px*/
 }
 
 :focus:not(:focus-visible) {

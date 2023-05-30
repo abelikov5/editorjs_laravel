@@ -36,8 +36,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 @auth()
-                    <button id="saveButton">SafeButton</button>
-                    <button id="previewBtn">Preview</button>
+                    @if (Route::has('editor'))
+                        <button id="saveButton" class="btn-primary d_center d_flex">SafeButton</button>
+                        <button id="previewBtn" class="btn-primary d_center d_flex">Preview</button>
+                    @endif
                 @endauth
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

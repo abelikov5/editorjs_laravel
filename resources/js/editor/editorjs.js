@@ -17,7 +17,7 @@ const editor = new EditorJS(editorConfig);
 saveButton.addEventListener('click', function () {
     editor.save()
         .then((savedData) => {
-            let data = JSON.stringify([savedData, pageId]);
+            let data = JSON.stringify([savedData, pageId, 'XmgxkQ']);
             xhr_request('/preview', data, 'POST');
         })
         .catch((error) => {

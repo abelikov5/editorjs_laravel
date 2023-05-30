@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
     <div class="container">
         <div id="editorjs"></div>
     </div>
+
+{{--    <x-maps-tab noFilLug="true" noStrogino="true" noBunin="true" noDmd="true"/>--}}
 
 @endsection
 <script>

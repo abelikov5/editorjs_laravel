@@ -31,9 +31,7 @@ h2 {
     line-height: 22px!important;
     color: #636D79;
 }
-.ce-toolbar__content, .ce-block__content {
-    max-width: 783px;
-}
+
 .seo_container {
     width: 783px;
     margin: 0 auto;
