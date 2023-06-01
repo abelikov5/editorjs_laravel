@@ -10,32 +10,25 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="/fonts/acrom/stylesheet.css">
     <link rel="stylesheet" href="/css/style_editor.css">
     <link rel="stylesheet" href="/css/style.css">
-        @if (Route::currentRouteName() != 'editor')
-    <link rel="stylesheet" href="/css/uikit.min.css">
-        @endif
+    @if (Route::currentRouteName() != 'editor')
+        <link rel="stylesheet" href="/css/uikit.min.css">
+    @endif
 
-    {{--    @if (Route::currentRouteName() != 'editor')--}}
     @vite(['resources/sass/app.scss', 'resources/css/blocks.css', 'resources/js/app.js', 'resources/js/editor/editorjs.js' ])
-{{--    @endif--}}
-
-    <!-- Scripts -->
-{{--        @vite('resources/js/helpers/functions.js')--}}
-    <link rel="preload" as="style" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
-{{--    <link rel="modulepreload" href="{{ asset('/build/assets/app-310fd588.js') }}">--}}
-    <link rel="stylesheet" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
-{{--    <script type="module" src="{{ asset('/build/assets/editor-d3309905.js') }}"></script>--}}
-{{--    <script type="module" src="{{ asset('/build/assets/editorjs-35ca9d43.js') }}"></script>--}}
-{{--    <script type="module" href="{{asset('')}}"></script>--}}
+        <link rel="preload" as="style" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
+        <link rel="stylesheet" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
 
 
-
-
-
-
+{{--    Production script and styles --}}
+{{--        <link rel="stylesheet" href="{{asset('/build/assets/app-3ea8b221.css')}}">--}}
+{{--        <link rel="stylesheet" href="{{asset('/build/assets/app-f5a6dedd.css')}}">--}}
+{{--        <link rel="stylesheet" href="{{asset('/build/assets/blocks-028e5691.css')}}">--}}
+{{--        <script type="module" src="{{ asset('/build/assets/app-17ae0171.js') }}"></script>--}}
+{{--        <script type="module" src="{{ asset('/build/assets/editorjs-60e37a43.js') }}"></script>--}}
 </head>
 <body>
 <div id="app">
@@ -56,8 +49,8 @@
                     </a>
                 @endif
                 @if (Route::currentRouteName() == 'editor')
-                    <button id="saveButton" class="btn-primary d_center d_flex">SafeButton</button>
-                    <button id="previewBtn" class="btn-primary d_center d_flex">Preview</button>
+                    <button id="saveButton" class="btn-primary d_center d_flex">Сохранить</button>
+                    {{--                    <button id="previewBtn" class="btn-primary d_center d_flex">Preview</button>--}}
                 @endif
 
             @endauth

@@ -92,7 +92,7 @@ export default class SportDirection {
         let value       = [];
         elements.forEach(el => {
             img.push(el.querySelector('.el_img img').src);
-            value.push(el.querySelector('input[type=text]').value)
+            value.push(el.querySelector('input[type=text]').value.replace(/[\n\r]/g, '<br>'))
         })
         return {
             img_url: img,

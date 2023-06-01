@@ -128,7 +128,7 @@ export default class Form {
         let disc_value  = blockContent.querySelectorAll('.form_wrap_el_info textarea');
         let value       = [];
         disc_value.forEach(el => {
-            value.push(el.value);
+            value.push(el.value.replace(/[\n\r]/g, '<br>'));
         })
 
         // elements.forEach(el => {

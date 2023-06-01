@@ -1,3 +1,8 @@
+@php
+    header('Location: /login');
+    exit();
+@endphp
+
 @extends('layouts.app')
 
 @section('content')

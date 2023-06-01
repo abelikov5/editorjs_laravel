@@ -56,7 +56,7 @@ export default class Metro {
     save(blockContent){
         let disc_value  = blockContent.querySelector('.metro_input');
         return {
-            value: disc_value.value,
+            value: disc_value.value.replace(/[\n\r]/g, '<br>'),
         }
     }
 }

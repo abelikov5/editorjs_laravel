@@ -127,6 +127,8 @@ input:hover, input:active, input:focus-visible {
     background-color: transparent;
     color: var(--bs-white);
     font-size: 30px;
+    width: 341px;
+    height: 60px;
     border: unset;
     text-transform: uppercase;
 
@@ -136,6 +138,7 @@ input:hover, input:active, input:focus-visible {
     color: var(--bs-white);
     font-size: 20px;
     border: unset;
+    width: 341px;
     margin-top: 22px;
 }
 .disc_input_text2 {

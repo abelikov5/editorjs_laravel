@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 
 class EditorController extends Controller
 {
-    public function api_nebo_sport($method, $pageId, $editorData) {
+    public function api_nebo_sport($method, $pageId, $editorData, $active, $header, $slack) {
 
         $token  = 'XmgxkQ';
         $url    = "https://nebo-sport.ru/api/editor/";
@@ -22,6 +22,9 @@ class EditorController extends Controller
                     'token'  => $token,
                     'pageId' => $pageId,
                     'editorData' => $editorData,
+                    'active'     => $active,
+                    'header'     => $header,
+                    'slack'      => $slack,
                 ],
                 'verify' => false
             ]);
@@ -68,7 +71,7 @@ class EditorController extends Controller
                     'updated_at' => new \DateTime(),
                 ]);
 
-            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data));
+            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data), '', '', '');
 
             return response()->json('updated', 201);
         }
@@ -79,7 +82,7 @@ class EditorController extends Controller
                 'pageId' => $page_id,
             ));
 
-            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data));
+            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data), '', '', '');
 
             return response()->json('created', 201);
 
@@ -114,7 +117,7 @@ class EditorController extends Controller
         if ($token === $csrf && isset($pageId)) {
             $res = Editor::where('pageId', $pageId)
                 ->delete();
-            $this->api_nebo_sport('DELETE', $pageId, '');
+            $this->api_nebo_sport('DELETE', $pageId, '', '', '', '');
             if ($res === 1) {
                 return response()->json(true);
             }
@@ -139,6 +142,9 @@ class EditorController extends Controller
                     'header' => 'copy_' . $res[0]['header'],
                 ));
 
+                $this->api_nebo_sport('POST', 'c_' . $res[0]['pageId'], $res[0]['editorData'], 0, 'copy_' . $res[0]['header'], '');
+
+
                 return response()->json($insert);
             }
 //                ->delete();
@@ -160,10 +166,10 @@ class EditorController extends Controller
                 ->update([
                     'active' => $r->input('active'),
                     'header' => $r->input('header'),
-                    'slack' => $r->input('slack'),
+                    'slack'  => $r->input('slack'),
                 ]);
 
-//            $this->api_nebo_sport('POST', '')
+            $this->api_nebo_sport('PUT', $pageId, false, $r->input('active'), $r->input('header'), $r->input('slack'));
             if ($res === 1) {
                 return response()->json(true);
             }

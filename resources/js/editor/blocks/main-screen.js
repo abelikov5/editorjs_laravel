@@ -123,13 +123,8 @@ export default class mainScreen {
         let disc_value  = blockContent.querySelectorAll('.main_wrap_el_info textarea');
         let value       = [];
         disc_value.forEach(el => {
-            value.push(el.value);
+            value.push(el.value.replace(/[\n\r]/g, '<br>'));
         })
-
-        // elements.forEach(el => {
-        //     img.push(el.querySelector('.discount_el_img img').src);
-        //     // value.push(el.querySelector('input[type=text]').value)
-        // })
         return {
             img_url: img,
             value: value,

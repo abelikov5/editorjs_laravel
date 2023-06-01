@@ -35,18 +35,18 @@ export default class Discount {
         el_img.appendChild(img);
         el_img.appendChild(input_img);
 
-        let input_head = document.createElement('input');
-        input_head.type = 'text';
+        let input_head = document.createElement('textarea');
+        // input_head.type = 'text';
         input_head.classList.add('discount_input_head');
 
-        let input_text = document.createElement('input');
-        input_text.type = 'text';
+        let input_text = document.createElement('textarea');
+        // input_text.type = 'text';
         input_text.classList.add('discount_input_text');
 
-        let input_text2 = document.createElement('input');
-        input_text2.type = 'text';
-        input_text2.classList.add('discount_input_text');
-        input_text2.classList.add('disc_input_text2');
+        // let input_text2 = document.createElement('input');
+        // input_text2.type = 'text';
+        // input_text2.classList.add('discount_input_text');
+        // input_text2.classList.add('disc_input_text2');
 
         let el_text = document.createElement('div');
         el_text.classList.add('discount_wrap_el_info');
@@ -55,11 +55,11 @@ export default class Discount {
             console.log('text value ', text_value)
             input_head.value = text_value[0];
             input_text.value = text_value[1];
-            input_text2.value = text_value[2];
+            // input_text2.value = text_value[2];
         } else {
             input_head.value = 'Скидка 20%';
             input_text.value = 'Приобретите абонемент со скидкой';
-            input_text2.value = 'на 1 месяц в день мероприятия';
+            // input_text2.value = 'на 1 месяц в день мероприятия';
         }
 
         let disc_btn = document.createElement('button');
@@ -72,7 +72,7 @@ export default class Discount {
 
         el_text.appendChild(input_head);
         el_text.appendChild(input_text);
-        el_text.appendChild(input_text2);
+        // el_text.appendChild(input_text2);
         el_text.appendChild(disc_btn);
         el_text.appendChild(term);
 
@@ -127,10 +127,10 @@ export default class Discount {
     save(blockContent){
         // let elements    = blockContent.querySelectorAll('.discount_el_img');
         let img         = blockContent.querySelector('.discount_el_img img').src;
-        let disc_value  = blockContent.querySelectorAll('.discount_wrap_el_info input');
+        let disc_value  = blockContent.querySelectorAll('.discount_wrap_el_info textarea');
         let value       = [];
         disc_value.forEach(el => {
-            value.push(el.value);
+            value.push(el.value.replace(/[\n\r]/g, '<br>'));
         })
 
         // elements.forEach(el => {
