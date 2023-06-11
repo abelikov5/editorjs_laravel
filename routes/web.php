@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Middleware\PreviewEditor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,14 @@ Route::get('/editor',   [HomeController::class, 'editor'])->name('editor');
 Route::get('/setup',    [HomeController::class, 'setup'])->name('setup');
 Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/preview',  [EditorController::class, 'preview'])->name('preview');
-Route::post('/preview', [EditorController::class, 'upload']);
+Route::post('/safe',    [EditorController::class, 'safe']);
 
-Route::get('/qq', [EditorController::class, 'api_nebo_sport']);
-
+Route::get('/mail', [MailController::class, 'PageInform']);
 
 Route::prefix('/api')->group(function () {
     Route::post('/uploadFile',  [EditorController::class, 'uploadFile']);
     Route::delete('/editor',    [EditorController::class, 'delete'])->name('del_editor');
     Route::post('/copy',        [EditorController::class, 'copy'])->name('copy_editor');
     Route::post('/page_setup',  [EditorController::class, 'page_setup'])->name('page_setup');
+    Route::post('/mail',        [MailController::class, 'PageInform']);
 });

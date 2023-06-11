@@ -3,7 +3,7 @@
 @section('content')
     <div class="dash_container">
 
-        <page-setup :data='@json($data)' :base='@json($url)' />
+        <page-setup :data='@json($data)' :base='@json($url)' role="{{$role}}" />
     </div>
 @endsection
 

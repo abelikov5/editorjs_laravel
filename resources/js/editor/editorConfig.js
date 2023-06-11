@@ -40,9 +40,9 @@ export let editorConfig = {
         discount: {
             class: Discount,
         },
-        form: {
-            class: Form,
-        }
+        // form: {
+        //     class: Form,
+        // }
     },
     data: {},
 };

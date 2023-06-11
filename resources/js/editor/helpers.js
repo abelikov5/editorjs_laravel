@@ -4,16 +4,6 @@ export function uuidv4() {
     );
 }
 
-export function xhr_request(url, data, method) {
-    return new Promise(function (resolve, reject) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, url, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = resolve;
-        xhr.onerror = reject;
-        xhr.send(data);
-    });
-}
 
 
 

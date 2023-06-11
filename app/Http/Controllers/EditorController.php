@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Editor;
 use http\Client\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
 class EditorController extends Controller
 {
-    public function api_nebo_sport($method, $pageId, $editorData, $active, $header, $slack) {
+    public function api_nebo_sport($method, $pageId, $editorData, $active, $header, $slack, $description) {
 
         $token  = 'XmgxkQ';
         $url    = "https://nebo-sport.ru/api/editor/";
@@ -21,10 +22,11 @@ class EditorController extends Controller
                 'form_params' => [
                     'token'  => $token,
                     'pageId' => $pageId,
-                    'editorData' => $editorData,
-                    'active'     => $active,
-                    'header'     => $header,
-                    'slack'      => $slack,
+                    'editorData'    => $editorData,
+                    'active'        => $active,
+                    'header'        => $header,
+                    'slack'         => $slack,
+                    'description'   => $description,
                 ],
                 'verify' => false
             ]);
@@ -57,36 +59,47 @@ class EditorController extends Controller
         return view('404');
     }
 
-    public function upload(Request $r)
+    public function safe(Request $r)
     {
-        $data = $r->all()[0]['blocks'];
-        $page_id = $r->all()[1];
+        $data   = $r->input('data');
+        $pageId = $r->input('pageId');
+        $csrf   = $r->input('csrf');
+        $token  = $r->session()->token();
 
-        $req = Editor::where('pageId', $page_id)->get();
+        if ($token === $csrf && isset($pageId)) {
+            $req = Editor::where('pageId', $pageId)->get();
 
-        if (isset($req[0])) {
-            Editor::where('pageId', $page_id)
-                ->update([
-                    'editorData' => json_encode($data),
-                    'updated_at' => new \DateTime(),
+            if (isset($req[0])) {
+                $active = Auth::user()->role === 'marketing' ? 0 : $req[0]->active;
+                Editor::where('pageId', $pageId)
+                    ->update([
+                        'editorData' => $data,
+                        'updated_at' => new \DateTime(),
+                        'active'     => $active,
+                    ]);
+
+                $this->api_nebo_sport('POST', $pageId, $data, $active, '', '', '');
+
+                return response()->json('updated', 201);
+            }
+
+            if (isset($data)) {
+
+                Editor::create([
+                    'editorData' => $data,
+                    'created_at' => new \DateTime(),
+                    'pageId'     => $pageId,
                 ]);
 
-            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data), '', '', '');
+                $this->api_nebo_sport('POST', $pageId, $data, '', '', '', '');
+                return response()->json('created', 201);
+            }
 
-            return response()->json('updated', 201);
+
+            return \response()->json([$pageId, $data, $req]);
         }
-        if (isset($data)) {
-            Editor::insert(array(
-                'editorData' => json_encode($data),
-                'created_at' => new \DateTime(),
-                'pageId' => $page_id,
-            ));
 
-            $resp = $this->api_nebo_sport('POST', $page_id, json_encode($data), '', '', '');
 
-            return response()->json('created', 201);
-
-        }
         return response()->json('no data', 204);
     }
 
@@ -117,7 +130,7 @@ class EditorController extends Controller
         if ($token === $csrf && isset($pageId)) {
             $res = Editor::where('pageId', $pageId)
                 ->delete();
-            $this->api_nebo_sport('DELETE', $pageId, '', '', '', '');
+            $this->api_nebo_sport('DELETE', $pageId, '', '', '', '', '');
             if ($res === 1) {
                 return response()->json(true);
             }
@@ -142,7 +155,7 @@ class EditorController extends Controller
                     'header' => 'copy_' . $res[0]['header'],
                 ));
 
-                $this->api_nebo_sport('POST', 'c_' . $res[0]['pageId'], $res[0]['editorData'], 0, 'copy_' . $res[0]['header'], '');
+                $this->api_nebo_sport('POST', 'c_' . $res[0]['pageId'], $res[0]['editorData'], 0, 'copy_' . $res[0]['header'], '', '');
 
 
                 return response()->json($insert);
@@ -164,12 +177,13 @@ class EditorController extends Controller
         if ($token === $csrf && isset($pageId)) {
             $res = Editor::where('pageId', $pageId)
                 ->update([
-                    'active' => $r->input('active'),
-                    'header' => $r->input('header'),
-                    'slack'  => $r->input('slack'),
+                    'active'        => $r->input('active'),
+                    'header'        => $r->input('header'),
+                    'description'   => $r->input('description'),
+                    'slack'         => $r->input('slack'),
                 ]);
 
-            $this->api_nebo_sport('PUT', $pageId, false, $r->input('active'), $r->input('header'), $r->input('slack'));
+            $this->api_nebo_sport('PUT', $pageId, false, $r->input('active'), $r->input('header'), $r->input('slack'), $r->input('description'));
             if ($res === 1) {
                 return response()->json(true);
             }
@@ -177,3 +191,4 @@ class EditorController extends Controller
         return \response()->json(false);
     }
 }
+

@@ -26,9 +26,9 @@
 {{--    Production script and styles --}}
 {{--        <link rel="stylesheet" href="{{asset('/build/assets/app-3ea8b221.css')}}">--}}
 {{--        <link rel="stylesheet" href="{{asset('/build/assets/app-f5a6dedd.css')}}">--}}
-{{--        <link rel="stylesheet" href="{{asset('/build/assets/blocks-028e5691.css')}}">--}}
+{{--        <link rel="stylesheet" href="{{asset('/build/assets/blocks-72f86de7.css')}}">--}}
 {{--        <script type="module" src="{{ asset('/build/assets/app-17ae0171.js') }}"></script>--}}
-{{--        <script type="module" src="{{ asset('/build/assets/editorjs-60e37a43.js') }}"></script>--}}
+{{--        <script type="module" src="{{ asset('/build/assets/editorjs-bb460c35.js') }}"></script>--}}
 </head>
 <body>
 <div id="app">
@@ -42,6 +42,7 @@
             </button>
             @auth()
                 @if (Route::currentRouteName() == 'dashboard')
+
                     <a href="{{route('editor')}}">
                         <button id="newPage" class="btn-primary d_center d_flex">
                             Создать страницу

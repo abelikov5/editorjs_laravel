@@ -9,7 +9,8 @@
         </div>
 
         <div class="dash_body" >
-            <DashElement v-for="item in pages" :data="item" @del-elem="delElem(item.id)" @copy="copy(item.id)" :base="this.base" />
+            <DashElement v-for="item in pages" :data="item" @del-elem="delElem(item.id)"
+                         @copy="copy(item.id)" :base="this.base" :role="this.role"/>
         </div>
     </div>
 </template>
@@ -21,7 +22,7 @@
 
     export default {
         components: { DashElement },
-        props: ['data', 'base'],
+        props: ['data', 'base', 'role'],
         emits: ['del-elem', 'copy'],
 
         data() {

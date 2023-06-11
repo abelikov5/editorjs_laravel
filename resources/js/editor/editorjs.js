@@ -1,37 +1,42 @@
-import EditorJS from '@editorjs/editorjs';
-import {uuidv4, xhr_request} from "./helpers";
-import {editorConfig} from './editorConfig';
+import EditorJS         from '@editorjs/editorjs';
+import {uuidv4}         from "./helpers";
+import {editorConfig}   from './editorConfig';
 
 const saveButton = document.getElementById('saveButton');
-const previewBtn = document.getElementById('previewBtn');
 
-if(pageId == '') {
-    pageId = uuidv4();
-}
-if(editorData !== '') {
-    editorConfig.data.blocks = JSON.parse(editorData);
-}
-const editor = new EditorJS(editorConfig);
+if(window.location.pathname === '/editor') {
 
-
-saveButton.addEventListener('click', function () {
-    editor.save()
-        .then((savedData) => {
-            let data = JSON.stringify([savedData, pageId, 'XmgxkQ']);
-            xhr_request('/preview', data, 'POST');
-        })
-        .catch((error) => {
-            console.error('Saving error', error);
-        });
-});
-
-previewBtn.addEventListener('click', function () {
-    if(pageId) {
-        window.open('/preview?page_id=' + pageId);
+    if(!window.location.search.includes('pageId=')) {
+        pageId = uuidv4();
     }
 
-    console.log(previewBtn, pageId);
-})
+    const editor = new EditorJS(editorConfig);
 
-// console.log("lastPage 42", pageId, editorData);
+    if(editorData !== '') {
+        editorConfig.data.blocks = JSON.parse(editorData);
+    }
+
+    saveButton.addEventListener('click', function () {
+        let csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        editor.save()
+            .then((savedData) => {
+                axios
+                    .post('safe?pageId=' + pageId + '&data=' + JSON.stringify(savedData.blocks) + '&csrf=' + csrf)
+                    .then(res => {
+                        console.log("safe_data", res);
+                    });
+            })
+            .catch((error) => {
+                console.error('Saving ERROR', error);
+            });
+    });
+}
+
+
+
+
+
+
+
+
 

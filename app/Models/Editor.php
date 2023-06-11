@@ -9,5 +9,6 @@ class Editor extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['editorData', 'created_at', 'pageId'];
 
 }
