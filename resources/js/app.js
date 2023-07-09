@@ -15,14 +15,11 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-// import ExampleComponent from './components/ExampleComponent.vue';
-import DashBoard from './components/dashbord/DashBord.vue';
-import PageSetup from './components/dashbord/PageSetup.vue';
-// import EditorJS from "@editorjs/editorjs";
 
-// app.component('example-component', ExampleComponent);
+import DashBoard from './components/dashbord/DashBord.vue';
+
 app.component('dash-board', DashBoard);
-app.component('page-setup', PageSetup);
+
 
 /**
  * The following block of code may be used to automatically register your

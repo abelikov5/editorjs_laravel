@@ -2,11 +2,7 @@
 
 @section('content')
     <div class="dash_container">
-        <dash-board :data='@json($data)' :base='@json($url)' :role='@json($role)'/>
-    </div>
-
-    <div>
-        {{ $data->links() }}
+        <dash-board :role='@json($role)'/>
     </div>
 
 @endsection

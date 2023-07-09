@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\EditorController;
+use App\Http\Controllers\ParserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Middleware\PreviewEditor;
@@ -26,18 +26,19 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/home',     [HomeController::class, 'index'])->name('home');
-Route::get('/editor',   [HomeController::class, 'editor'])->name('editor');
-Route::get('/setup',    [HomeController::class, 'setup'])->name('setup');
+//Route::get('/editor',   [HomeController::class, 'editor'])->name('editor');
+//Route::get('/setup',    [HomeController::class, 'setup'])->name('setup');
 Route::get('/dashboard',[HomeController::class, 'dashboard'])->name('dashboard');
-Route::get('/preview',  [EditorController::class, 'preview'])->name('preview');
-Route::post('/safe',    [EditorController::class, 'safe']);
+Route::get('/qq',[ParserController::class, 'qq']);
+//Route::get('/preview',  [EditorController::class, 'preview'])->name('preview');
+//Route::post('/safe',    [EditorController::class, 'safe']);
 
 Route::get('/mail', [MailController::class, 'PageInform']);
 
 Route::prefix('/api')->group(function () {
-    Route::post('/uploadFile',  [EditorController::class, 'uploadFile']);
-    Route::delete('/editor',    [EditorController::class, 'delete'])->name('del_editor');
-    Route::post('/copy',        [EditorController::class, 'copy'])->name('copy_editor');
-    Route::post('/page_setup',  [EditorController::class, 'page_setup'])->name('page_setup');
-    Route::post('/mail',        [MailController::class, 'PageInform']);
+    Route::post('/uploadFile',  [ParserController::class, 'uploadFile']);
+//    Route::delete('/editor',    [EditorController::class, 'delete'])->name('del_editor');
+//    Route::post('/copy',        [EditorController::class, 'copy'])->name('copy_editor');
+//    Route::post('/page_setup',  [EditorController::class, 'page_setup'])->name('page_setup');
+//    Route::post('/mail',        [MailController::class, 'PageInform']);
 });

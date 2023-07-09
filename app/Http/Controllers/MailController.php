@@ -10,7 +10,7 @@ class MailController extends Controller
 {
     public function PageInform() {
 
-        Mail::to('abelikov@inbox.ru')->send(new NewPageInform());
+        Mail::to('Mark2@nebojump.ru')->send(new NewPageInform());
         return response()->json(true);
     }
 }
