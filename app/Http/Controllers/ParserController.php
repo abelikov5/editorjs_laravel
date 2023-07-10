@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dataset;
+use App\Models\DatasetLead;
 use App\Models\Editor;
 use Carbon\Carbon;
 use http\Client\Response;
@@ -30,8 +31,14 @@ class ParserController extends Controller
 //
 //        return \response()->json($direct);
     }
-    private function get_device($str) {
+    private function get_device($str, $check = false) {
         $str = trim($str);
+        if ($check) {
+            if($str === 'desktop' || $str === 'mobile' || $str === 'tablet') {
+                return $str;
+            }
+            return '';
+        }
         if($str === 'десктоп') {
             return 'desktop';
         }
@@ -98,63 +105,66 @@ class ParserController extends Controller
         return false;
     }
 
+    public function _filter($str):string {
+        return intval($str) > 10 ? $str : '';
+    }
+
     public function parse_lead($arr) {
         $res = [];
         foreach ($arr as $el) {
-//            $res[] = $el;
-            $tmp = Dataset::where('l_id', trim(intval($el[0])))->first();
-            if(empty($tmp)) {
+            $date           = $this->data_parse($el[3]);
+            $group_id       = $this->parse_campaign($el[13]);
+            $group_id       = $this->_filter($group_id);
+            $campaign_id    = $this->parse_campaign($el[14]);
+            $campaign_id    = $this->_filter($campaign_id);
+            $device         = $this->parse_campaign($el[14], true);
+            $device         = $this->get_device($device, true);
 
-                $campaign = $this->parse_campaign($el[14]);
-                $group    = $this->parse_campaign($el[13]);
-                $date     = $this->data_parse($el[3]);
-                $device   = $this->parse_campaign($el[14], true);
+            DatasetLead::updateOrCreate([
+                'l_id' => trim(intval($el[0]))
+            ],[
+                'date'                  => Carbon::createFromFormat('d.m.Y', $date),
+                'date_string'           => $date,
+                'campaign_id'           => $campaign_id,
+                'group_id'              => $group_id,
+                'device'                => $device,
 
-                $res[] = [trim(intval($el[0])), $campaign, $group, $date, $device];
+                'l_qlt'                 => trim($el[2]),
+                'l_utm_source'          => trim($el[12]),
+                'l_utm_medium'          => trim($el[13]),
+                'l_utm_campaign'        => trim($el[14]),
+                'l_utm_content'         => trim($el[15]),
+                'l_utm_term'            => trim($el[16]),
+                'l_google_client_id'    => trim($el[39]),
+                'l_metrika_client_id'   => trim($el[40]),
 
+            ]);
 
-                $direct = Dataset::where('date_string', $date)
-                    ->where('campaign_id', $campaign)
-                    ->where('clicks', '>', 0)
-                    ->where('group_id', $group)
-                    ->where('device', $device)
-                    ->get();
-
-                if($direct && count($direct)) {
-
-
-                        $direct[0]->l_id                = trim($el[0]);
-                        $direct[0]->l_qlt               = trim($el[2]);
-                        $direct[0]->l_utm_source        = trim($el[12]);
-                        $direct[0]->l_utm_medium        = trim($el[13]);
-                        $direct[0]->l_utm_campaign      = trim($el[14]);
-                        $direct[0]->l_utm_content       = trim($el[15]);
-                        $direct[0]->l_utm_term          = trim($el[16]);
-
-                        $direct[0]->l_google_client_id  = trim($el[39]);
-                        $direct[0]->l_metrika_client_id = trim($el[40]);
-
-                        $direct[0]->save();
-
-
-                } else {
-//                    $res[] = ['элемент не найден', $el, [$campaign, $group, $date, $device]];
-                }
-
-
-//                $res[] = $direct;
-            }
-
+            $res[] = $el;
         }
         return $res;
     }
+
     public function array_shift_num($type, $rows) {
         $num = $type === 'direct' ? 5 : 1;
         for($i = 0; $i < $num; $i++) {
             array_shift($rows);
         }
         return $rows;
+    }
 
+    public function get_type($str) {
+        $params = array_map('trim', explode(';', $str));
+        if (str_contains($params[0], 'Клиент Имя')) {
+            return 'direct';
+        }
+        if(str_contains($params[1], 'Название лида')) {
+            return 'lead';
+        }
+        if(str_contains($params[1], 'Название сделки')) {
+            return 'sale';
+        }
+        return false;
     }
 
     public function uploadFile(Request $r)
@@ -162,9 +172,14 @@ class ParserController extends Controller
         ini_set('max_execution_time', 600);
 
         $file = $r->file('file');
-        $type = $_POST['type'];
 
         $rows = array_map('trim', file($file));
+
+        $type = $this->get_type($rows[0]);
+
+        if(!$type) {
+            return response()->json(['message' => 'Тип документа не определен', 'type' => 'Error!'], 400);
+        }
 
         $rows = $this->array_shift_num($type, $rows);
 
@@ -189,8 +204,10 @@ class ParserController extends Controller
         if ($type === 'lead') {
             $data = $this->parse_lead($data);
         }
+        if ($type === 'sale') {
+            return response()->json(['message' => 'Sale']);
+        }
 
-//        return response()->json($type);
 
         return response()->json([$type, $data]);
     }

@@ -11,19 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('datasets', function (Blueprint $table) {
-
-            // директ
+        Schema::create('dataset_sales', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->nullable();
             $table->string('date_string')->nullable();
             $table->string('campaign_id')->nullable();
             $table->string('group_id')->nullable();
             $table->string('device')->nullable();
-            $table->float('cost')->nullable();
-            $table->float('click_position')->nullable();
-            $table->integer('clicks')->nullable();
-            $table->integer('leads')->nullable();
+            // сделки
+            $table->integer('s_id')->nullable();                    // id сделки
+            $table->date('s_date')->nullable();                     // дата оплаты
+            $table->string('s_name')->nullable();                   // название сделки
+            $table->integer('s_amount')->nullable();                // выручка
 
             $table->timestamps();
         });
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dataset');
+        Schema::dropIfExists('dataset_sales');
     }
 };
