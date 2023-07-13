@@ -19,6 +19,7 @@
     "dependencies": {
         "@editorjs/header": "^2.7.0",
         "dropzone": "^6.0.0-beta.2",
+        "mitt": "^3.0.1",
         "vite-plugin-static-copy": "^0.14.0"
     }
 }

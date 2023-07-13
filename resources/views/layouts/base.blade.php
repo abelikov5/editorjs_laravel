@@ -18,17 +18,17 @@
         <link rel="stylesheet" href="/css/uikit.min.css">
     @endif
 
-    @vite(['resources/sass/app.scss', 'resources/css/blocks.css', 'resources/js/app.js', 'resources/js/editor/editorjs.js' ])
+{{--    @vite(['resources/sass/app.scss', 'resources/css/blocks.css', 'resources/js/app.js', 'resources/js/editor/editorjs.js' ])--}}
         <link rel="preload" as="style" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
         <link rel="stylesheet" href="{{ asset('/build/assets/app-3ea8b221.css') }}">
 
 
 {{--    Production script and styles --}}
+        <link rel="stylesheet" href="{{asset('/build/assets/app-746f0adf.css')}}">
+        <link rel="stylesheet" href="{{asset('/build/assets/blocks-a67b326d.css')}}">
         <link rel="stylesheet" href="{{asset('/build/assets/app-3ea8b221.css')}}">
-        <link rel="stylesheet" href="{{asset('/build/assets/app-d7a9f618.css')}}">
-        <link rel="stylesheet" href="{{asset('/build/assets/blocks-72f86de7.css')}}">
-{{--        <script type="module"  src="{{ asset('/build/assets/app-2e5034a9.js') }}"></script>--}}
-{{--        <script type="module"  src="{{ asset('/build/assets/editorjs-55c3dea5.js') }}"></script>--}}
+        <script type="module"  src="{{ asset('/build/assets/app-c02713b8.js ') }}"></script>
+        <script type="module"  src="{{ asset('/build/assets/editorjs-55c3dea5.js') }}"></script>
 </head>
 <body>
 <div id="app">

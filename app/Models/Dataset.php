@@ -9,5 +9,6 @@ class Dataset extends Model
 {
     protected $fillable = ['date','date_string', 'campaign_id', 'group_id', 'device', 'cost', 'click_position', 'clicks', 'leads'];
 
+
     use HasFactory;
 }

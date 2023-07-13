@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="dash_container">
-        <dash-board :role='@json($role)'/>
+        <dash-board :role='@json($role)'
+                    :direct='@json($direct)'
+                    :lead='@json($lead)'
+                    :sale='@json($sale)'
+        />
     </div>
 
 @endsection

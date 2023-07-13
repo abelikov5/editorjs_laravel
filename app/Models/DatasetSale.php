@@ -13,6 +13,17 @@ class DatasetSale extends Model
         'campaign_id',
         'group_id',
         'device',
+        's_id',
+        's_date',
+        's_name',
+        's_amount',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_content',
+        'utm_term',
+        'google_client_id',
+        'metrika_client_id',
         ];
 
     use HasFactory;

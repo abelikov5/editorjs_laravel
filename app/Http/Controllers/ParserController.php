@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dataset;
 use App\Models\DatasetLead;
+use App\Models\DatasetSale;
 use App\Models\Editor;
 use Carbon\Carbon;
 use http\Client\Response;
@@ -66,12 +67,26 @@ class ParserController extends Controller
 
     }
 
-    public function data_parse($str):string {
+    public function data_parse($str, $payment = false):string {
         $str = trim($str);
+        try {
+            if($payment) {
+                $str = explode(',', $str);
+                if($str && count($str) > 1) {
+                    $str = trim($str[count($str) - 1]);
+                } else {
+                    $str = trim($str[0]);
+                }
+            }
+        } catch (Exception $e) {
+            return 'ERRROR';
+        }
+
         return explode(' ', $str)[0];
     }
 
     public function parse_direct($arr) {
+        $res = [];
         foreach ($arr as $el) {
             Dataset::updateOrCreate([
                     'date_string'   => $this->data_parse($el[0]),
@@ -86,7 +101,9 @@ class ParserController extends Controller
                     'clicks'            => trim($el[7])
                 ]
             );
+            $res[] = $el;
         }
+        return $res;
     }
 
     public function parse_campaign($str, $device = false) {
@@ -145,6 +162,46 @@ class ParserController extends Controller
         return $res;
     }
 
+    public function parse_sale($arr) {
+        $res = [];
+        foreach ($arr as $el) {
+            $date           = $this->data_parse($el[10]);
+            $sale_date      = $this->data_parse($el[11], true);
+            $group_id       = $this->parse_campaign($el[20]);
+            $group_id       = $this->_filter($group_id);
+            $campaign_id    = $this->parse_campaign($el[21]);
+            $campaign_id    = $this->_filter($campaign_id);
+            $device         = $this->parse_campaign($el[21], true);
+            $device         = $this->get_device($device, true);
+
+            DatasetSale::updateOrCreate([
+                's_id' => trim(intval($el[0]))
+            ],[
+                'date'                  => Carbon::createFromFormat('d.m.Y', $date),
+                'date_string'           => $date,
+                'campaign_id'           => $campaign_id,
+                'group_id'              => $group_id,
+                'device'                => $device,
+
+                'utm_source'            => trim($el[19]),
+                'utm_medium'            => trim($el[20]),
+                'utm_campaign'          => trim($el[21]),
+                'utm_content'           => trim($el[22]),
+                'utm_term'              => trim($el[23]),
+                'google_client_id'      => trim($el[24]),
+                'metrika_client_id'     => trim($el[25]),
+
+
+                's_date'                => $sale_date,                          // дата оплаты
+                's_name'                => trim($el[14]),
+                's_amount'              => intval(trim($el[8])),
+            ]);
+
+            $res[] = $el[0];
+        }
+        return $res;
+    }
+
     public function array_shift_num($type, $rows) {
         $num = $type === 'direct' ? 5 : 1;
         for($i = 0; $i < $num; $i++) {
@@ -178,7 +235,7 @@ class ParserController extends Controller
         $type = $this->get_type($rows[0]);
 
         if(!$type) {
-            return response()->json(['message' => 'Тип документа не определен', 'type' => 'Error!'], 400);
+            return response()->json(['message' => 'Тип документа не определен', 'type' => 'Error!'], 200);
         }
 
         $rows = $this->array_shift_num($type, $rows);
@@ -199,17 +256,17 @@ class ParserController extends Controller
 
 
         if($type === 'direct') {
-            $this->parse_direct($data);
+            $data = $this->parse_direct($data);
         }
         if ($type === 'lead') {
             $data = $this->parse_lead($data);
         }
         if ($type === 'sale') {
-            return response()->json(['message' => 'Sale']);
+            $data = $this->parse_sale($data);
         }
 
 
-        return response()->json([$type, $data]);
+        return response()->json([$type, $data, true]);
     }
 
 }

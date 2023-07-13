@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ParserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
@@ -36,7 +37,9 @@ Route::get('/qq',[ParserController::class, 'qq']);
 Route::get('/mail', [MailController::class, 'PageInform']);
 
 Route::prefix('/api')->group(function () {
-    Route::post('/uploadFile',  [ParserController::class, 'uploadFile']);
+    Route::post('/uploadFile',  [ParserController::class, 'uploadFile'])->middleware('auth');
+    Route::get('/download',     [DownloadController::class, 'index'])->middleware('auth');
+    Route::get('/datasetfinal', [DownloadController::class, 'create_dataset_final']);
 //    Route::delete('/editor',    [EditorController::class, 'delete'])->name('del_editor');
 //    Route::post('/copy',        [EditorController::class, 'copy'])->name('copy_editor');
 //    Route::post('/page_setup',  [EditorController::class, 'page_setup'])->name('page_setup');

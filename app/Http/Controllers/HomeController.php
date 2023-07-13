@@ -48,6 +48,9 @@ class HomeController extends Controller
 //            ->simplePaginate(25);
         return view('dashboard', [
             'role' => Auth::user()->role,
+            "direct" => DB::table('datasets')->count(),
+            "lead" => DB::table('dataset_leads')->count(),
+            "sale" => DB::table('dataset_sales')->count(),
         ]);
     }
 }
