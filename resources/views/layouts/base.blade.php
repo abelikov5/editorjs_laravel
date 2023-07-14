@@ -24,10 +24,10 @@
 
 
 {{--    Production script and styles --}}
-        <link rel="stylesheet" href="{{asset('/build/assets/app-746f0adf.css')}}">
+        <link rel="stylesheet" href="{{asset('/build/assets/app-385686b7.css')}}">
         <link rel="stylesheet" href="{{asset('/build/assets/blocks-a67b326d.css')}}">
         <link rel="stylesheet" href="{{asset('/build/assets/app-3ea8b221.css')}}">
-        <script type="module"  src="{{ asset('/build/assets/app-c02713b8.js ') }}"></script>
+        <script type="module"  src="{{ asset('/build/assets/app-97570a13.js') }}"></script>
         <script type="module"  src="{{ asset('/build/assets/editorjs-55c3dea5.js') }}"></script>
 </head>
 <body>

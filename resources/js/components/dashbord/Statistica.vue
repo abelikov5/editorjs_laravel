@@ -63,7 +63,8 @@ export default {
             axios.get('/api/download')
             .then(res => {
                 this.signature = 'Успешно загружено и обработано ' + res.data.length + ' строк!'
-                console.log('SUCCESS!!', res)
+                window.open(res.data, '_blank');
+                console.log('SUCCESS!!', res.data)
             })
              .catch(res => {
                  this.signature = 'Error! Ошибка парсинга файла';

@@ -195,11 +195,12 @@ class DownloadController extends Controller
         $xlsx   = new SimpleXLSXGen;
 
         $file = $xlsx::fromArray($this->prepare_dataset());
-        $file_path = storage_path() . '/files/' . time() . '.xlsx';
+        $path = '/files/' . time() . '.xlsx';
+        $file_path = public_path() . $path;
 
         $file->saveAs($file_path);
 
-        return response()->json($file_path);
+        return response()->json('https://www.' . env('APP_URL') . $path);
     }
 
     public function create_dataset_final() {
