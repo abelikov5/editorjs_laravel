@@ -95,12 +95,11 @@ class DownloadController extends Controller
         return $obj[$campaign_id] ?? "undefined";
     }
 
-
     private function parse_direct($obj):array {
         return [
             $obj->date_string,
-            $obj->campaign_id,
-            $obj->group_id,
+            strlen($obj->campaign_id) > 3 ? $obj->campaign_id : 'undefined',
+            strlen($obj->group_id) > 3 ? $obj->group_id : 'undefined',
             $obj->device,
             $obj->cost,
             $obj->clicks,
@@ -123,8 +122,8 @@ class DownloadController extends Controller
     private function parse_lead($obj):array {
         return [
             $obj->date_string,
-            $obj->campaign_id,
-            $obj->group_id,
+            strlen($obj->campaign_id) > 3 ? $obj->campaign_id : 'undefined',
+            strlen($obj->group_id) > 3 ? $obj->group_id : 'undefined',
             $obj->device,
             null,
             null,
@@ -149,8 +148,8 @@ class DownloadController extends Controller
     private function parse_sale($obj):array {
         return [
             $obj->date_string,
-            $obj->campaign_id,
-            $obj->group_id,
+            strlen($obj->campaign_id) > 3 ? $obj->campaign_id : 'undefined',
+            strlen($obj->group_id) > 3 ? $obj->group_id : 'undefined',
             $obj->device,
             null,
             null,
@@ -179,13 +178,22 @@ class DownloadController extends Controller
         $res[]  = $this->head();
 
         foreach (Dataset::all() as $el) {
-            $res[]  = $this->parse_direct($el);
+            $tmp = $this->parse_direct($el);
+            if($tmp[10] !== 'yandex.maps' ) {
+                $res[]  = $tmp;
+            }
         }
         foreach (DatasetLead::all() as $el) {
-            $res[]  = $this->parse_lead($el);
+            $tmp    = $this->parse_lead($el);
+            if($tmp[10] !== 'yandex.maps' ) {
+                $res[]  = $tmp;
+            }
         }
         foreach (DatasetSale::all() as $el) {
-            $res[]  = $this->parse_sale($el);
+            $tmp    = $this->parse_sale($el);
+            if($tmp[10] !== 'yandex.maps' ) {
+                $res[]  = $tmp;
+            }
         }
 
         return $res;
@@ -196,6 +204,7 @@ class DownloadController extends Controller
 
         $file = $xlsx::fromArray($this->prepare_dataset());
         $path = '/files/' . time() . '.xlsx';
+//        $file_path = storage_path() . $path;  //localversion
         $file_path = public_path() . $path;
 
         $file->saveAs($file_path);

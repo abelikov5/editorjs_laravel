@@ -1,7 +1,6 @@
 <template>
 
     <div class="file_upload">
-<!--        <h2>{{ title }}</h2>-->
 
         <div class="wrap_input" @click="fileChoose('file_' + type)" :class="{ 'wrap_upload' : upload }">
             <div v-html="signature">
@@ -9,7 +8,6 @@
             </div>
             <input type="file" :id="'file_' + type" ref="file" @change="handleFileUpload()" accept=".csv"/>
         </div>
-
 
         <button @click="submitFiles()" class="btn-primary" :disabled="upload">Загрузить</button>
     </div>
@@ -70,7 +68,6 @@ export default {
     components: {},
     emits: ["saleEvent", 'leadEvent', 'directEvent'],
 
-
     data() {
         return {
             file: '',
@@ -90,12 +87,13 @@ export default {
         },
         submitFiles() {
 
+            if(!this.file) {
+                this.signature = "Выберите файл для загрузки";
+                return;
+            }
+
             let formData = new FormData();
             formData.append('file', this.file);
-            formData.append('type', this.type);
-
-            // console.log(formData, this.file.name)
-            // this.saleEvent();
             this.upload = true;
 
             axios.post('/api/uploadFile',
@@ -106,20 +104,22 @@ export default {
                     this.signature = 'В таблицу <b>' + res.data[0] + '</b> успешно загружено и обработано <b>' + res.data[1].length + '</b> строк!'
                     let type = res.data[0];
                     if(type === 'direct') {
-                        this.$emit("directEvent", res.data[1].length);
+                        this.$emit("directEvent", res.data[3]);
                     }
                     if(type === 'sale') {
-                        this.$emit("saleEvent", res.data[1].length);
+                        this.$emit("saleEvent", res.data[3]);
                     }
                     if(type === 'lead') {
-                        this.$emit("leadEvent", res.data[1].length);
+                        this.$emit("leadEvent", res.data[3]);
                     }
+                    this.file = '';
 
                 }
             })
              .catch(res => {
                  this.signature = 'Error! Ошибка парсинга файла';
                  console.log('FAILURE!! ', res)
+                 this.file = '';
              });
         },
 

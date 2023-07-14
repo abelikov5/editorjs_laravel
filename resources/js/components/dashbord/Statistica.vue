@@ -31,7 +31,6 @@
     border: 1px solid var(--primary);
     border-radius: 0.5rem;
     display: flex;
-    //justify-content: center;
     align-items: center;
     overflow: hidden;
 }
@@ -62,12 +61,12 @@ export default {
 
             axios.get('/api/download')
             .then(res => {
-                this.signature = 'Успешно загружено и обработано ' + res.data.length + ' строк!'
+                // this.signature = 'Успешно загружено и обработано ' + res.data.length + ' строк!'
                 window.open(res.data, '_blank');
                 console.log('SUCCESS!!', res.data)
             })
              .catch(res => {
-                 this.signature = 'Error! Ошибка парсинга файла';
+                 // this.signature = 'Error! Ошибка парсинга файла';
                  console.log('FAILURE!! ', res)
              });
         },

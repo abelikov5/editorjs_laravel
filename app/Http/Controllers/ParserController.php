@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
@@ -253,20 +254,23 @@ class ParserController extends Controller
             $data[] = $res ;
         }
 
-
+        $total_line = 0;
 
         if($type === 'direct') {
             $data = $this->parse_direct($data);
+            $total_line = DB::table('datasets')->count();
         }
         if ($type === 'lead') {
             $data = $this->parse_lead($data);
+            $total_line = DB::table('dataset_leads')->count();
         }
         if ($type === 'sale') {
             $data = $this->parse_sale($data);
+            $total_line = DB::table('dataset_sales')->count();
         }
 
 
-        return response()->json([$type, $data, true]);
+        return response()->json([$type, $data, true, $total_line]);
     }
 
 }
