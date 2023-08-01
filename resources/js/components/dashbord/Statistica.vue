@@ -3,9 +3,9 @@
     <div class="file_upload">
         <div class="wrap_input">
             <div class="wrap_stat">
-                <div><b>Директ:</b> {{direct}} строк</div>
-                <div><b>Лиды:</b> {{ lead }} строк</div>
-                <div><b>Заказы:</b> {{ sale }} строк</div>
+                <stat-element type="Директ" :qnt="direct"   />
+                <stat-element type="Лиды"   :qnt="lead"     />
+                <stat-element type="Заказы" :qnt="sale"     />
             </div>
         </div>
 
@@ -16,6 +16,9 @@
 <style scoped>
 .file_upload {
     width: 300px;
+}
+.btn-clean {
+    background-color: #efe17e;
 }
 .btn-primary {
     width: 100%;
@@ -41,10 +44,12 @@ h2 {
 </style>
 
 <script>
+import StatElement from './StatElement.vue';
 
 export default {
     props: ['type', 'direct', 'lead', 'sale'],
-    components: {},
+    components: {StatElement},
+    emits: ["saleEvent", 'leadEvent', 'directEvent'],
 
 
     data() {
@@ -55,10 +60,7 @@ export default {
         }
     },
     methods: {
-
         downloadReport() {
-            console.log('download')
-
             axios.get('/api/download')
             .then(res => {
                 // this.signature = 'Успешно загружено и обработано ' + res.data.length + ' строк!'

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CleanController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\ParserController;
 use App\Http\Controllers\HomeController;
@@ -38,6 +39,7 @@ Route::get('/mail', [MailController::class, 'PageInform']);
 
 Route::prefix('/api')->group(function () {
     Route::post('/uploadFile',  [ParserController::class, 'uploadFile'])->middleware('auth');
+    Route::post('/clean_db/{type}',  [CleanController::class, 'index'])->middleware('auth');
     Route::get('/download',     [DownloadController::class, 'index'])->middleware('auth');
     Route::get('/datasetfinal', [DownloadController::class, 'create_dataset_final']);
 //    Route::delete('/editor',    [EditorController::class, 'delete'])->name('del_editor');

@@ -3,7 +3,7 @@
 
         <FileUpload type="direct" @saleEvent="saleEvent" @leadEvent="leadEvent" @directEvent="directEvent"/>
 
-        <Statistica type="direct" :direct="count_direct" :lead="count_lead" :sale="count_sale" />
+        <Statistica type="direct" :direct="count_direct" :lead="count_lead" :sale="count_sale" @saleEvent="saleEvent" @leadEvent="leadEvent" @directEvent="directEvent"/>
 
     </div>
 </template>
@@ -19,10 +19,10 @@
 
 
     import FileUpload from './FileUpload.vue';
-    import Statistica from "@/components/dashbord/Statistica.vue";
+    import Statistica from "./Statistica.vue";
 
     export default {
-        components: {Statistica, FileUpload },
+        components: { Statistica, FileUpload },
         props: ['direct', 'sale', 'lead', 'role'],
         emits: ['del-elem', 'copy'],
 

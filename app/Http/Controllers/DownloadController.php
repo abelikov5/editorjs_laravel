@@ -189,7 +189,7 @@ class DownloadController extends Controller
                 $res[]  = $tmp;
             }
         }
-        foreach (DatasetSale::all() as $el) {
+        foreach (DatasetSale::orderby('date', 'ASC')->get() as $el) {
             $tmp    = $this->parse_sale($el);
             if($tmp[10] !== 'yandex.maps' ) {
                 $res[]  = $tmp;

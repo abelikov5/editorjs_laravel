@@ -195,7 +195,7 @@ class ParserController extends Controller
 
                 's_date'                => $sale_date,                          // дата оплаты
                 's_name'                => trim($el[14]),
-                's_amount'              => intval(trim($el[8])),
+                's_amount'              => floatval(trim($el[8])),
             ]);
 
             $res[] = $el[0];

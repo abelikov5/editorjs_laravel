@@ -32,7 +32,7 @@ return new class extends Migration
             $table->integer('s_id')->nullable();                    // id сделки
             $table->string('s_date')->nullable();                   // дата оплаты
             $table->string('s_name')->nullable();                   // название сделки
-            $table->integer('s_amount')->nullable();                // выручка
+            $table->float('s_amount')->nullable();                // выручка
 
             $table->timestamps();
         });
